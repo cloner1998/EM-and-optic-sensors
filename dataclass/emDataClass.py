@@ -13,10 +13,15 @@ class EmSensorsParameters:
     D: float
     SNR_db: float
 
+    # for passive EM sensor
+    crossSection: float
+
+    sensor_type: str = "Active"  # it could be passive too, but we just only consider active sensor here
+
     @property
     def wavelength(self) -> float:
         c = 3e8
         return c / self.frequency
 
     def SNRLinear(self) -> float:
-        return 10**(self.SNR_db / 10)
+        return 10 ** (self.SNR_db / 10)
