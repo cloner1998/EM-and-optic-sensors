@@ -28,7 +28,7 @@ class OpticalSensorModel:
 
         d = self.params.pixel_pitch
         f = self.params.focal_length
-        SNR = self.params.SNR_linear
+        SNR = self.params.SNRLinear
         sigma_smpl_theta = (d / f) * (1 / np.sqrt(SNR))
 
         sigma_tot_theta = np.sqrt(sigma_diff_theta ** 2 + sigma_smpl_theta ** 2)
@@ -38,8 +38,8 @@ class OpticalSensorModel:
     def angleErrorNonImagingPsd(self) -> float:
         f = self.params.focal_length
         spot_diameter = self.params.spot_diameter
-        SNR = self.params.SNR_linear
-        sigma_pos_X = self.params.sigma_pos_X
+        SNR = self.params.SNRLinear
+        sigma_pos_X = self.params.sigma_pos_x
 
         sigma_noise_X = spot_diameter / np.sqrt(SNR)
 
