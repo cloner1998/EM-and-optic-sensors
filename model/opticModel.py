@@ -22,25 +22,20 @@ class OpticalSensorModel:
         return R_eff
 
     def anglErrorImaging(self) -> Tuple[float, float, float]:
-        """Calculate angle error for imaging sensors (Equations 13-15)"""
-        # Diffraction limit
         lambda_val = self.params.wavelength
         D = self.params.D
         sigma_diff_theta = 1.22 * lambda_val / D
 
-        # Sampling limit
         d = self.params.pixel_pitch
         f = self.params.focal_length
         SNR = self.params.SNR_linear
         sigma_smpl_theta = (d / f) * (1 / np.sqrt(SNR))
 
-        # Total RMS error
         sigma_tot_theta = np.sqrt(sigma_diff_theta ** 2 + sigma_smpl_theta ** 2)
 
         return sigma_diff_theta, sigma_smpl_theta, sigma_tot_theta
 
     def angleErrorNonImagingPsd(self) -> float:
-        """Calculate angle error for non-imaging PSD sensors (Equations 16-18)"""
         f = self.params.focal_length
         spot_diameter = self.params.spot_diameter
         SNR = self.params.SNR_linear
@@ -55,7 +50,7 @@ class OpticalSensorModel:
         return sigma_theta
 
     def angleError(self) -> float:
-        """Calculate angle error based on sensor type"""
+
         if self.params.sensor_type == "imaging":
             _, _, sigma_theta = self.anglErrorImaging()
             return sigma_theta
