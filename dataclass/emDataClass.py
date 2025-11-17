@@ -14,7 +14,7 @@ class EmSensorsParameters:
     SNR_db: float
 
     # for passive EM sensor
-    crossSection: float
+    cross_section: float
 
     sensor_type: str = "Active"  # it could be passive too, but we just only consider active sensor here
 
