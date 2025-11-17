@@ -9,7 +9,7 @@ class OpticalSensorModel:
     def __init__(self, params: OpticSensorsParameters):
         self.params = params
 
-    def effectiveRange(self) -> float:
+    def effective_range(self) -> float:
         I_0 = self.params.I_0
         I_min = self.params.I_min
         beta = self.params.beta
@@ -21,24 +21,24 @@ class OpticalSensorModel:
         R_eff = (1 / beta) * np.log(I_0 / I_min)
         return R_eff
 
-    def anglErrorImaging(self) -> Tuple[float, float, float]:
+    def angle_error_imaging(self) -> Tuple[float, float, float]:
         lambda_val = self.params.wavelength
         D = self.params.D
         sigma_diff_theta = 1.22 * lambda_val / D
 
         d = self.params.pixel_pitch
         f = self.params.focal_length
-        SNR = self.params.SNRLinear
+        SNR = self.params.snr_linear
         sigma_smpl_theta = (d / f) * (1 / np.sqrt(SNR))
 
         sigma_tot_theta = np.sqrt(sigma_diff_theta ** 2 + sigma_smpl_theta ** 2)
 
         return sigma_diff_theta, sigma_smpl_theta, sigma_tot_theta
 
-    def angleErrorNonImagingPsd(self) -> float:
+    def angle_error_non_imaging_psd(self) -> float:
         f = self.params.focal_length
         spot_diameter = self.params.spot_diameter
-        SNR = self.params.SNRLinear
+        SNR = self.params.snr_linear
         sigma_pos_X = self.params.sigma_pos_x
 
         sigma_noise_X = spot_diameter / np.sqrt(SNR)
@@ -49,12 +49,12 @@ class OpticalSensorModel:
 
         return sigma_theta
 
-    def angleError(self) -> float:
+    def angle_error(self) -> float:
 
         if self.params.sensor_type == "imaging":
-            _, _, sigma_theta = self.anglErrorImaging()
+            _, _, sigma_theta = self.angle_error_imaging()
             return sigma_theta
         elif self.params.sensor_type == "non-imaging":
-            return self.angleErrorNonImagingPsd()
+            return self.angle_error_non_imaging_psd()
         else:
             raise ValueError(f"Unknown sensor type: {self.params.sensor_type}")

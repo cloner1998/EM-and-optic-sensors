@@ -23,5 +23,5 @@ class EmSensorsParameters:
         c = 3e8
         return c / self.frequency
 
-    def SNRLinear(self) -> float:
+    def snr_linear(self) -> float:
         return 10 ** (self.SNR_db / 10)

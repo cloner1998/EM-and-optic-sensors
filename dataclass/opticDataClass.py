@@ -22,5 +22,5 @@ class OpticSensorsParameters:
     sensor_type: str = "imaging"  # it could be non-imaging
 
     @property
-    def SNRLinear(self) -> float:
+    def snr_linear(self) -> float:
         return 10 ** (self.SNR_db / 10)

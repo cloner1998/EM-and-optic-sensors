@@ -6,10 +6,10 @@ class EMSensorsModel:
     def __init__(self, params: EmSensorsParameters):
         self.params = params
 
-    def freeSpacePathLoss(self, R: float):
+    def free_space_path_loss(self, R: float):
         return np.power(4 * np.pi * R / self.params.wavelength, 2)
 
-    def receivedPower(self, R: float):
+    def received_power(self, R: float):
         P_t = self.params.P_t
         G_t = self.params.G_t
         G_r = self.params.G_r
@@ -24,13 +24,13 @@ class EMSensorsModel:
 
     # ToDo(implement effective range for passive EM sensors)
 
-    def effectiveRange(self) -> float:
+    def effective_range(self) -> float:
         R_min, R_max = 1.0, 1e6
         tolerance = 1.0
 
         while R_max - R_min > tolerance:
             R_mid = (R_max + R_min) / 2
-            P_r = self.receivedPower(R_mid)
+            P_r = self.received_power(R_mid)
 
             if P_r > self.params.P_r_min:
                 R_min = R_mid
@@ -39,11 +39,11 @@ class EMSensorsModel:
 
         return R_min
 
-    def angleError(self) -> float:
+    def angle_error(self) -> float:
         """Calculate RMS angular error (radians) using Equation 10"""
         lambda_val = self.params.wavelength
         D = self.params.D
-        SNR = self.params.SNRLinear()
+        SNR = self.params.snr_linear()
 
         sigma_theta = lambda_val / (2 * np.pi * D * np.sqrt(SNR))
         return sigma_theta
