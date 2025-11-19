@@ -10,7 +10,7 @@ class EmSensorsParameters:
     P_r_min: float
     L_system: float
     alpha: float
-    D: float
+    D: float #aperture size
     SNR_db: float
 
     # for passive EM sensor
@@ -23,5 +23,6 @@ class EmSensorsParameters:
         c = 3e8
         return c / self.frequency
 
+    @property
     def snr_linear(self) -> float:
         return 10 ** (self.SNR_db / 10)

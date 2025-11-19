@@ -62,7 +62,7 @@ class EMSensorsModel:
     def angle_error(self) -> float:
         lambda_val = self.params.wavelength
         D = self.params.D
-        SNR = self.params.snr_linear()
+        SNR = self.params.snr_linear
 
         sigma_theta = lambda_val / (2 * np.pi * D * np.sqrt(SNR))
         return sigma_theta
