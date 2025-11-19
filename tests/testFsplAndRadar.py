@@ -1,4 +1,5 @@
 import numpy as np
+import pytest
 from dataclass.emDataClass import EmSensorsParameters
 from model.emModel import EMSensorsModel
 
