@@ -1,7 +1,18 @@
-import warnings
+"""
+Optical sensor model: effective range via Beer-Lambert, imaging angle error approximation.
+
+Units:
+ - distances in meters
+ - irradiance I_0, I_min in W/m^2
+ - wavelength in meters
+ - beta extinction coefficient in 1/m
+ - pixel_pitch and focal_length in meters
+"""
+
 from typing import Tuple
 import numpy as np
-
+from dataclass.opticDataClass import OpticSensorsParameters
+from model.units import assert_positive, db2lin
 from dataclass.opticDataClass import OpticSensorsParameters
 
 
@@ -13,12 +24,12 @@ class OpticalSensorModel:
         I_0 = self.params.I_0
         I_min = self.params.I_min
         beta = self.params.beta
+        if I_min <= 0 or I_0 <= 0:
+            raise ValueError("I_0 and I_min must be > 0 (W/m^2)")
+        if beta <= 0:
+            return np.inf  # no attenuation
 
-        if I_0 <= I_min:
-            warnings.warn("Initial intensity is less than minimum detectable intensity")
-            return 0.0
-
-        R_eff = (1 / beta) * np.log(I_0 / I_min)
+        R_eff = -np.log(I_min / I_0) / beta
         return R_eff
 
     def angle_error_imaging(self) -> Tuple[float, float, float]:
@@ -28,7 +39,7 @@ class OpticalSensorModel:
 
         d = self.params.pixel_pitch
         f = self.params.focal_length
-        SNR = self.params.snr_linear
+        SNR = db2lin(self.params.SNR_db)
         sigma_smpl_theta = (d / f) * (1 / np.sqrt(SNR))
 
         sigma_tot_theta = np.sqrt(sigma_diff_theta ** 2 + sigma_smpl_theta ** 2)
@@ -38,7 +49,7 @@ class OpticalSensorModel:
     def angle_error_non_imaging_psd(self) -> float:
         f = self.params.focal_length
         spot_diameter = self.params.spot_diameter
-        SNR = self.params.snr_linear
+        SNR = db2lin(self.params.SNR_db)
         sigma_pos_X = self.params.sigma_pos_x
 
         sigma_noise_X = spot_diameter / np.sqrt(SNR)
