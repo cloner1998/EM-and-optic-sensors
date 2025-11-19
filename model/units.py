@@ -11,7 +11,7 @@ Conventions:
  - angles: radians (unless documented)
 """
 
-import math
+import numpy as np
 
 c = 299792458.0  # speed of light (m/s)
 
@@ -31,7 +31,7 @@ def db2lin(db: float) -> float:
 def lin2db(x: float) -> float:
     if x <= 0:
         raise ValueError("lin2db: input must be > 0")
-    return 10.0 * math.log10(x)
+    return 10.0 * np.log10(x)
 
 def assert_positive(name: str, value: float) -> None:
     if value is None:
