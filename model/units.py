@@ -1,4 +1,3 @@
-# model/units.py
 """
 Small unit helpers and validators used across the repo.
 
