@@ -133,7 +133,7 @@ Recall that there is a threshold for the sensors below which the sensors cannot 
  We should be aware of the link margin = $P_r$ – $P_{r, min}$. If it is positive, it is a reliable link, and if it is negative, the link will fail.
 
 For the estimation of the effective range of an active EM sensor, we can use the RRE formula.
-The key difference is that while active sensors have a two-way path (transmit and receive), passive sensors have a one-way path (receive only), which fundamentally changes the form of the equations—particularly how range affects signal strength ($\frac{1}{R^2}$ for passive vs. $\frac{1}{R^4}$ for active radar in the simplest case). Another major difference is that in the passive case, the characteristics of the object that we want to detect are very important. By considering these two major differences, we can find the effective range of the passive sensors by
+The key difference is that while active sensors have a two-way path (transmit and receive), passive sensors have a one-way path (receive only), which fundamentally changes the form of the equations—particularly how range affects signal strength ($\frac{1}{R^2}$ for passive vs. $\frac{1}{R^4}$ for active radar in the simplest case). Another major difference is that in the passive case, the characteristics of the object that we want to detect are very important. By considering these two major differences, we can find the effective range of the active sensors by
 \begin{equation}
     R_{max}=\left(\frac{(P_tG^2\lambda^2\sigma)}{(4\pi)^3S_{min}}\right)^{\frac{1}{4}}.
 \end{equation}
