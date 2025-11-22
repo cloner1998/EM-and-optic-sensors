@@ -11,9 +11,9 @@ Units:
 
 from typing import Tuple
 import numpy as np
-from dataclass.opticDataClass import OpticSensorsParameters
+from dataclass.optic_data_class import OpticSensorsParameters
 from model.units import assert_positive, db2lin
-from dataclass.opticDataClass import OpticSensorsParameters
+from dataclass.optic_data_class import OpticSensorsParameters
 
 
 class OpticalSensorModel:

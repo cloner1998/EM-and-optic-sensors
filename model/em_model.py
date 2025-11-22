@@ -4,7 +4,7 @@ EM sensor models: FSPL, passive received power, active radar eq., and angle erro
 All distances in meters, frequency in Hz, gain linear, powers in Watts, SNR_db in dB.
 """
 
-from dataclass.emDataClass import EmSensorsParameters
+from dataclass.em_data_class import EmSensorsParameters
 import numpy as np
 from model.units import assert_positive, lin2db
 
@@ -74,8 +74,17 @@ class EMSensorsModel:
             raise NotImplementedError
         return R_min
 
-    def bisection(self, func, R_min=1.0, R_max=1e6, tolerance=1.0) -> float:
-        while R_max - R_min > tolerance:
+    def bisection(self, func, R_min=1.0, R_max=1e6, tolerance=1.0, max_iter=100) -> float:
+        """
+        Find maximum range where received power >= P_r_min
+
+        Returns:
+            Maximum detection range in meters
+            Returns R_max if signal never drops below threshold
+        """
+        for iteration in range(max_iter):
+            if R_max - R_min < tolerance:
+                break
             R_mid = (R_max + R_min) / 2
             P_r = func(R_mid)
 
@@ -83,6 +92,11 @@ class EMSensorsModel:
                 R_min = R_mid
             else:
                 R_max = R_mid
+
+        # Check if we found valid range
+        if func(R_min) < self.params.P_r_min:
+            print("Warning: Signal below threshold even at minimum range")
+
         return R_min
 
     def angle_error(self) -> float:

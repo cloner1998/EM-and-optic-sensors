@@ -4,12 +4,12 @@ Demonstrates various real-world scenarios including terrain analysis.
 """
 
 import numpy as np
-from dataclass.emDataClass import EmSensorsParameters
-from model.emModel import EMSensorsModel
-from dataclass.opticDataClass import OpticSensorsParameters
-from model.opticModel import OpticalSensorModel
+from dataclass.em_data_class import EmSensorsParameters
+from model.em_model import EMSensorsModel
+from dataclass.optic_data_class import OpticSensorsParameters
+from model.optic_model import OpticalSensorModel
 from dataclass.terrain import TerrainProfile
-from terrain.terrainAnalyzer import TerrainAnalyzer
+from terrain.terrain_analyzer import TerrainAnalyzer
 
 
 def example_1_basic_active_radar():

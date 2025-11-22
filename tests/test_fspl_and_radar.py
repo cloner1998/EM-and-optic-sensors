@@ -1,7 +1,7 @@
 import numpy as np
 import pytest
-from dataclass.emDataClass import EmSensorsParameters
-from model.emModel import EMSensorsModel
+from dataclass.em_data_class import EmSensorsParameters
+from model.em_model import EMSensorsModel
 
 def test_fspl_behavior():
     params = EmSensorsParameters(P_t=1.0,G_t=1.0,G_r=1.0,frequency=3e8,P_r_min=1e-12,L_system=1.0,
