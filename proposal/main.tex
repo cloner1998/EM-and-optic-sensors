@@ -8,6 +8,7 @@
  top=20mm,
  }
  \usepackage{graphicx}
+ \usepackage{multicol}
  \usepackage{titling}
  \usepackage{amsmath}
 \usepackage[
@@ -323,6 +324,161 @@ Then calculate the angle error for EM sensors. For computing the angle error for
 
 Use a simple terrain profile and compute $h_{LOS}$ by equation \ref{eq:LOS}. Maybe try to compute the first Fresnel ellipsoid and then observe whether the terrain could affect the first ellipsoid or not.
 
+\section{Units}
+
+In this section we summarize all our formula and parameters with their units and range.
+\begin{multicols}{2}
+	\subsection*{$\bullet$ Transmitter Power ($P_t$)}
+	\begin{itemize}
+		\item \textbf{Unit:} Watts (W)
+		\item \textbf{Typical Range:} 0.1--10,000 W
+		\item \textbf{Description:} Power emitted by the transmitter.
+	\end{itemize}
+	
+	\subsection*{$\bullet$ Receiver Minimum Detectable Power ($P_{r,\min}$)}
+	\begin{itemize}
+		\item \textbf{Unit:} Watts (W)
+		\item \textbf{Typical Range:} $10^{-12}$--$10^{-16}$ W
+		\item \textbf{Description:} Smallest reliably detectable power.
+	\end{itemize}
+	
+	\subsection*{$\bullet$ Antenna Gains ($G_t$, $G_r$)}
+	\begin{itemize}
+		\item \textbf{Unit:} dimensionless (linear) or dBi
+		\item \textbf{Typical Range:} 1--10,000 (0--40 dBi)
+	\end{itemize}
+	
+	\subsection*{$\bullet$ Frequency ($f$)}
+	\begin{itemize}
+		\item \textbf{Unit:} Hertz (Hz)
+		\item \textbf{Typical Range:} $10^6$--$10^{11}$ Hz
+	\end{itemize}
+	
+	\subsection*{$\bullet$ Wavelength ($\lambda$)}
+	\begin{itemize}
+		\item \textbf{Unit:} meters (m)
+		\item \textbf{Formula:} $\lambda = \frac{c}{f}$
+	\end{itemize}
+	
+	\subsection*{$\bullet$ System Losses ($L_\text{system}$)}
+	\begin{itemize}
+		\item \textbf{Unit:} dimensionless
+		\item \textbf{Typical Range:} 1--10
+	\end{itemize}
+	
+	\subsection*{$\bullet$ Atmospheric Attenuation Coefficient ($\alpha$)}
+	\begin{itemize}
+		\item \textbf{Unit:} 1/m
+		\item \textbf{Typical Range:} 0--0.02 1/m
+	\end{itemize}
+	
+	\subsection*{$\bullet$ Aperture Diameter ($D$)}
+	\begin{itemize}
+		\item \textbf{Unit:} meters (m)
+		\item \textbf{Typical Range:} 0.05--10 m
+	\end{itemize}
+	
+	\subsection*{$\bullet$ Signal-to-Noise Ratio (SNR)}
+	\begin{itemize}
+		\item \textbf{Units:} dB (input), unitless (linear)
+		\item \textbf{Typical Range:} 5--40 dB
+	\end{itemize}
+	
+	\subsection*{$\bullet$ Radar Cross Section ($\sigma$)}
+	\begin{itemize}
+		\item \textbf{Unit:} m$^2$
+		\item \textbf{Typical Ranges:}
+		\begin{itemize}
+			\item Small UAV: 0.01--0.1 m$^2$
+			\item Car: 1--10 m$^2$
+			\item Aircraft: 5--100 m$^2$
+		\end{itemize}
+	\end{itemize}
+	
+	\subsection*{$\bullet$ Source Irradiance ($I_0$)}
+	\begin{itemize}
+		\item \textbf{Unit:} W/m$^2$
+		\item \textbf{Range:} 0.1--100 W/m$^2$
+	\end{itemize}
+	
+	\subsection*{$\bullet$ Minimum Detectable Irradiance ($I_{\min}$)}
+	\begin{itemize}
+		\item \textbf{Unit:} W/m$^2$
+		\item \textbf{Typical Range:} $10^{-9}$--$10^{-6}$ W/m$^2$
+	\end{itemize}
+	
+	\subsection*{$\bullet$ Optical Wavelength ($\lambda$)}
+	\begin{itemize}
+		\item \textbf{Unit:} meters (m)
+		\item \textbf{Visible:} 400--700 nm
+		\item \textbf{IR:} 700 nm--14 µm
+	\end{itemize}
+	
+	\subsection*{$\bullet$ Optical Extinction Coefficient ($\beta$)}
+	\begin{itemize}
+		\item \textbf{Unit:} 1/m
+		\item \textbf{Typical Range:}
+		\begin{itemize}
+			\item Clear: 0.01--0.1 1/m
+			\item Fog: 0.3--3 1/m
+		\end{itemize}
+	\end{itemize}
+	
+	\subsection*{$\bullet$ Aperture Diameter ($D$)}
+	\begin{itemize}
+		\item \textbf{Unit:} meters (m)
+		\item \textbf{Range:} 0.01--0.2 m
+	\end{itemize}
+	
+	\subsection*{$\bullet$ Pixel Pitch}
+	\begin{itemize}
+		\item \textbf{Unit:} meters (m)
+		\item \textbf{Range:} 1--10 µm
+	\end{itemize}
+	
+	\subsection*{$\bullet$ Focal Length ($f$)}
+	\begin{itemize}
+		\item \textbf{Unit:} meters (m)
+		\item \textbf{Range:} 0.01--0.2 m
+	\end{itemize}
+	
+	\subsection*{$\bullet$ Spot Diameter}
+	\begin{itemize}
+		\item \textbf{Unit:} meters (m)
+		\item \textbf{Range:} 0.5--2 mm
+	\end{itemize}
+	
+	\subsection*{$\bullet$ Positional Noise ($\sigma_x$)}
+	\begin{itemize}
+		\item \textbf{Unit:} meters (m)
+		\item \textbf{Range:} $10^{-6}$--$10^{-4}$ m
+	\end{itemize}
+	
+	\subsection*{$\bullet$ Terrain Heights $h(x)$}
+	\begin{itemize}
+		\item \textbf{Unit:} meters
+	\end{itemize}
+	
+	\subsection*{$\bullet$ Transmitter / Receiver Height}
+	\begin{itemize}
+		\item \textbf{Unit:} meters
+		\item \textbf{Range:} 1--200 m
+	\end{itemize}
+	
+	\subsection*{$\bullet$ Horizontal Distance ($x$)}
+	\begin{itemize}
+		\item \textbf{Unit:} meters
+	\end{itemize}
+	
+	\subsection*{$\bullet$ Fresnel Zone Radius ($F_1$)}
+	\begin{itemize}
+		\item \textbf{Unit:} meters
+		\item \textbf{Formula:} 
+		\[
+		F_1 = \sqrt{\frac{\lambda d_1 d_2}{d_1 + d_2}}
+		\]
+	\end{itemize}
+\end{multicols}
 
 \section{References}
 We use these references for the proposal:
