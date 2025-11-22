@@ -25,6 +25,7 @@ def example_em():
     )
     model = EMSensorsModel(params)
     R = model.effective_range()
+
     print(f"Estimated max active detection range: {R:.1f} m")
 
 def example_optic():
