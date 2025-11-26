@@ -1,0 +1,27 @@
+# Optical Sensor Configuration File
+# Format: KEY=VALUE
+
+# Sensor type
+sensor_type=imaging
+
+# Irradiance parameters
+I_0=1000.0
+I_min=0.1
+
+# Wavelength
+wavelength=550e-9
+
+# Atmospheric conditions
+beta=0.001
+
+# Optical parameters
+D=0.2
+focal_length=1.0
+pixel_pitch=3.5e-6
+
+# Signal quality
+SNR_db=35.0
+
+# Non-imaging parameters (not used for imaging type)
+spot_diameter=1e-3
+sigma_pos_x=1e-4

@@ -1,0 +1,12 @@
+======================================================================
+SENSOR ANALYSIS RESULTS
+Input File: input/input_em.txt
+Sensor Type: EM
+======================================================================
+
+Effective Range (m): 9639.78
+Effective Range (km): 9.64
+Angular Error (rad): 3.180897e-04
+Angular Error (mrad): 0.318
+Angular Error (degrees): 0.018225
+Position Error at max range (m): 3.07

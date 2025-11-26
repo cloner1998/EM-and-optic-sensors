@@ -1,0 +1,12 @@
+======================================================================
+SENSOR ANALYSIS RESULTS
+Input File: input/input_optics.txt
+Sensor Type: Optical
+======================================================================
+
+Effective Range (m): 9210.34
+Effective Range (km): 9.21
+Angular Error (rad): 3.355577e-06
+Angular Error (miu_rad): 3.356
+Angular Error (degrees): 0.000192
+Position Error at max range (m): 0.03

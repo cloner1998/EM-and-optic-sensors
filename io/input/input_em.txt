@@ -1,0 +1,32 @@
+# EM Sensor Configuration File
+# Format: KEY=VALUE
+# Lines starting with # are comments
+
+# Sensor identification
+sensor_type=Active
+
+# Transmitter parameters
+P_t=1000.0
+G_t=1000.0
+
+# Receiver parameters
+G_r=1000.0
+
+# Frequency and wavelength
+frequency=10e9
+
+# Sensitivity
+P_r_min=1e-13
+
+# Losses and attenuation
+L_system=2.0
+alpha=0.00005
+
+# Aperture
+D=1.5
+
+# Signal quality
+SNR_db=20.0
+
+# Target characteristics (for active radar)
+cross_section=10.0
